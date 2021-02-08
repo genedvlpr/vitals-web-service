@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vitals Web Service</title>
+
+    <link rel="stylesheet" href="css/index.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="css/angular-material.min.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+    <style>
+      body{
+        background-image: url("bg.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-attachment:scroll;
+        height: 1000px;
+        align-content: center;
+      }
+    </style>
+
+  </head>
+    <body id="body" ng-app="NewApp" ng-cloak ng-controller="AppCtrl">
+      <!--
+        Your HTML content here
+      -->  
+      
+      <!-- Angular Material requires Angular.js Libraries -->
+      <script src="js/angular.min.js"></script>
+      <script src="js/angular-animate.min.js"></script>
+      <script src="js/angular-aria.min.js"></script>
+      <script src="js/angular-messages.min.js"></script>
+    
+      <!-- Angular Material Library -->
+      <script src="js/angular-material.min.js"></script>
+      
+      <md-content id="content" style="background-color: transparent;">
+          <md-toolbar class="md-whiteframe-2dp" id="toolbar" style="position: fixed; top:0%; background-color: #2962FF;color:#fff">
+              <div class="md-toolbar-tools" >
+                  <md-button class="md-icon-button"  ng-click="toggleLeft()"    >
+                      <md-icon>
+                        <i class="material-icons" style="color: #fff">menu</i>
+                      </md-icon>
+                  </md-button>
+            
+                  <h2 flex md-truncate>Vitals Web Service</h2>
+            
+                  <md-button class="" id="btn_logout_home" style="background-color: #2962FF;color:#fff" onclick="logoutAccountInHome()">Logout</md-button>
+              </div>
+          </md-toolbar>
+    
+          <div ng-controller="AppCtrl" layout="column"  ng-cloak>
+    
+                <section layout="row" flex style="height:1000px">
+              
+                  <md-sidenav class="md-sidenav-left" md-component-id="left"
+                              md-disable-backdrop="false" md-whiteframe="4">
+              
+                    <md-toolbar class="md-theme-indigo" style="background-color: #2962FF;">
+                      <h1 class="md-toolbar-tools">Administrative Features</h1>
+                    </md-toolbar>
+              
+                    <md-content layout-margin="">
+                            <md-list ng-controller="ListCtrl" ng-cloak>
+                                <md-subheader class="md-no-sticky">You have access to this</md-subheader>
+                                <md-list-item class="md-2-line" ng-repeat="item in todos" ng-click="null"  href="{{ item.href }}">
+                                        <img id="md-avatar" ng-src="{{item.face}}" class="md-avatar" alt="{{item.who}}" />
+    
+                                        <div class="md-list-item-text" layout="column">
+                                          <h3 id="list_title">{{ item.title }}</h3>
+                                          <h4>{{ item.description }}</h4>
+                                        </div>
+                                      </md-list-item>
+                            </md-list>
+                      <div layout-align="end end" layout="column" >
+                        <md-button class="md-fab md-mini md-primary"  style="background-color: #2962FF;" ng-click="toggleLeft()">
+                            <md-icon>
+                              <i class="material-icons">chevron_left</i>
+                            </md-icon>
+                        </md-button>
+                      </div>
+                      
+                    </md-content>
+              
+                  </md-sidenav>
+              
+                  <md-content layout-align="center center" flex layout-padding style="background-color: transparent;margin-top: 56px">
+              
+                      <div ng-controller="ListCtrl"  layout="row"  layout-align="center center" >
+                        <md-card  class="md-whiteframe-6dp"  layout-align="center center" style="margin-bottom: 50px; margin-top: 30px; border-radius: 12px;">
+                          <div layout-md="row" layout-lg="row" layout-xs="column" layout-sm="column" style=" border-radius: 12px;">
+                            <div layout="row" layout-align="center center" style="background-color: #E3F2FD;padding: 40px" >
+                              <img src="src/web_ic_med_sol.png" style="width: 250px; height: 250px">
+                            </div>
+                        
+    
+                        <div layout="column" layout-align-xs="center center" layout-align-sm="center center" layout-align-xs="center center"  layout-align-md="center start" layout-align-lg="center start"style="margin-left: 50px;padding-top: 50px;padding-bottom: 50px;padding-right: 50px">
+                          <div  layout="column" >
+                            <label class="md-display-1" style="color: #2962FF; font-weight: 700">Medical Solution</label>
+                            <label class="md-subhead">Add new medical solutions to the database</label>
+    
+                          </div>
+                          
+                          <md-input-container id="input_container_1" style="width: 600px">
+                              <label id="label_input" style="text-transform:capitalize">Medicine name</label>
+                              <input id="medName" type="text" style="line-height: 18px;font-size:18px"  required>
+                          </md-input-container>
+    
+
+                          <md-input-container style="line-height: 18px;font-size:18px; margin-top:-20px;width:600px">
+                            <label >Diseases treated</label>
+                            <md-select  ng-model="selectedDiseases" multiple  required>
+                              <md-optgroup label="List of Diseases">
+                                <md-option ng-value="disease.name" ng-hide='disease.name  == null' ng-repeat="disease in diseases | orderBy: 'name'" 
+                                style="line-height: 18px;font-size:18px">{{disease.name}}</md-option>
+                              </md-optgroup>
+                            </md-select>
+                          </md-input-container>
+    
+                          <div layout="row" layout-align="center center">
+                            <md-input-container class="md-block" id="input_container_2" style="width: 600px; margin-top: 0px">
+                              <label id="label_input">Medicine description</label>
+                              <textarea  required id="medDescription" ng-model="user.biography" style="line-height: 12px;font-size:12px" md-maxlength="500" rows="6" md-select-on-focus></textarea>
+    
+                          </md-input-container>
+    
+                          </div>
+                          <div layout="row" layout-align="start center">
+                            <md-button style="background-color: #2962FF;color:#fff" onclick="uploadMedSolutions()">
+                            Save
+                          </md-button>
+    
+                          <label layout-align="center center" class="md-subhead" id="cloudSaveStatus"></label>
+    
+                          <p ng-if="selectedDiseases">
+                            {{printSelectedToppings()}}</p>
+                          </div>
+                          
+                        </div>
+                      </div>
+                        </md-card>
+                      
+                        
+                      </div>
+              
+                    </div>
+              
+                  </md-content>
+              
+                </section>
+              
+              </div>
+      </md-content>
+      
+
+          
+
+      <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+
+      <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+
+      <script src="js/init-firebase.js"></script>
+      <script src="js/index.js"></script>      
+
+      
+  </body>
+  
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vitals Web Service</title>
+
+    <link rel="stylesheet" href="css/index.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="css/angular-material.min.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+      <style>
+          body{
+            background-image: url("bg.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            background-attachment: scroll;
+            height: 900px;
+            align-content: center;
+          }
+        </style>
+  </head>
+    <body id="body" ng-app="NewApp" ng-cloak>
+      <!--
+        Your HTML content here
+      -->  
+      
+      <!-- Angular Material requires Angular.js Libraries -->
+      <script src="js/angular.min.js"></script>
+      <script src="js/angular-animate.min.js"></script>
+      <script src="js/angular-aria.min.js"></script>
+      <script src="js/angular-messages.min.js"></script>
+    
+      <!-- Angular Material Library -->
+      <script src="js/angular-material.min.js"></script>
+      <md-content id="content" style="background-color: transparent;">
+      
+      <md-toolbar id="toolbar">
+          <div class="md-toolbar-tools">
+        
+          </div>
+          </md-toolbar>
+
+          <md-content layout-align="center center" flex layout-padding style="background-color: transparent;margin-top:0px">
+          <div  layout="row"  layout-align="center center">
+            
+            <md-card class="md-whiteframe-8dp" style="padding: 50px" layout="column" >
+                <div layout-md="column" layout-lg="column" layout-xs="column" layout-sm="column"layout-align-xs="center center" layout-align-sm="center center" layout-align-xs="center center"  layout-align-md="center center" layout-align-lg="center center">
+                 <img src="https://firebasestorage.googleapis.com/v0/b/vitals-b53aa.appspot.com/o/resources%2Fvitals.png?alt=media&token=d3d78916-f161-47f6-bd6d-2e6fc2452823"
+               style="width:150px;height:150px">
+
+               <label id="headline" class="md-headline">Log in as administrator</label>
+               <label id="subhead" class="md-subhead">Login you credentials to verify you as an administrator</label>
+
+            <div class="div_form" layout="column"  layout-align-xs="center center" layout-align-sm="center center" layout-align-xs="center center"  layout-align-md="center center" layout-align-lg="center center">
+              <md-input-container id="input_container_1">
+                  <label id="label_input">Email</label>
+                  <input id="email" type="email">
+              </md-input-container>
+
+              <md-input-container id="input_container_2">
+                  <label id="label_input">Password</label>
+                  <input id="password" type="password">
+              </md-input-container>
+            <div layout="row" id="div_btn">
+              <md-button class="md-raised" id="btn_login" onclick="loginAccount()">Login</md-button>
+
+              <md-button md-no-ink class="md-raised" id="btn_logout" onclick="logoutAccount()">Logout</md-button>
+
+            </div>
+              
+              <label id="status" class="md-subhead"></label>
+          
+          </div>
+                </div>
+              
+          </md-card>
+
+          </div>
+          </md-content>
+
+        </md-content>  
+
+      <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+
+      <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+
+      <script src="js/index.js"></script>    
+      <script src="js/init-firebase.js"></script>
+  </body>
+  
+
+</html>

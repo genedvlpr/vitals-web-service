@@ -1,0 +1,49 @@
+
+#toolbar{
+    background-color: transparent;
+    color: #fff;
+}
+
+.div_form{
+    margin-top: 10px;
+}
+#input_container_2{
+    margin-top: -20px;
+}
+
+#card-1{
+    margin-top: 50px;
+    height: 30%;
+}
+.card_holder_1{
+}
+
+#label_input{
+    font-size: 16px;
+}
+
+#headline{
+    margin-top: 0%;
+    text-align: center;
+}
+#subhead{
+    text-align: center;
+}
+
+#div_btn{
+    margin-top: 0px;
+}
+
+#status{
+    margin-top: 20px;
+}
+
+#md-avatar{
+    width: 24px;
+    height: 24px;
+}
+
+#list_title{
+    color: #2962FF;
+    font-weight: 500;
+}
