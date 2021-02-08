@@ -6,7 +6,7 @@ var func;
 var doc_id;
 
 var firebaseConfig = {
-    apiKey: "AIzaSyB6aXGH8XO_pj1fEYzcmSMLR02jP6DxVvI",
+    apiKey: "[API_KEY]",
     authDomain: "vitals-b53aa.firebaseapp.com",
     databaseURL: "https://vitals-b53aa.firebaseio.com",
     projectId: "vitals-b53aa",
